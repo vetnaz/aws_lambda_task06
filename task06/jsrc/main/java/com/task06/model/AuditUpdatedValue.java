@@ -3,8 +3,9 @@ package com.task06.model;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.task06.constant.LambdaConstant;
 
-@DynamoDBTable(tableName = "Audit")
+@DynamoDBTable(tableName = LambdaConstant.AUDIT_TABLE)
 public class AuditUpdatedValue {
     private String id;
 
