@@ -13,7 +13,7 @@ public class AuditCreatedValue {
 
     private String modificationTime;
 
-    private String newValue;
+    private NewValue newValue;
 
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {
@@ -43,11 +43,11 @@ public class AuditCreatedValue {
     }
 
     @DynamoDBAttribute(attributeName = "newValue")
-    public String getNewValue() {
+    public NewValue getNewValue() {
         return newValue;
     }
 
-    public void setNewValue(String newValue) {
+    public void setNewValue(NewValue newValue) {
         this.newValue = newValue;
     }
 }

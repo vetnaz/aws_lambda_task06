@@ -15,9 +15,9 @@ public class AuditUpdatedValue {
 
     private String updatedAttribute;
 
-    private int oldValue;
+    private String oldValue;
 
-    private int newValue;
+    private String newValue;
 
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {
@@ -56,20 +56,20 @@ public class AuditUpdatedValue {
     }
 
     @DynamoDBAttribute(attributeName = "oldValue")
-    public int getOldValue() {
+    public String getOldValue() {
         return oldValue;
     }
 
-    public void setOldValue(int oldValue) {
+    public void setOldValue(String oldValue) {
         this.oldValue = oldValue;
     }
 
     @DynamoDBAttribute(attributeName = "newValue")
-    public int getNewValue() {
+    public String getNewValue() {
         return newValue;
     }
 
-    public void setNewValue(int newValue) {
+    public void setNewValue(String newValue) {
         this.newValue = newValue;
     }
 }

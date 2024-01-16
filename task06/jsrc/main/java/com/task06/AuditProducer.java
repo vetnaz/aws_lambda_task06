@@ -71,8 +71,8 @@ public class AuditProducer implements RequestHandler<DynamodbEvent, LambdaRespon
         auditUpdatedValue.setId(UUID.randomUUID().toString());
         auditUpdatedValue.setItemKey(newImage.get(LambdaConstant.KEY).getS());
         auditUpdatedValue.setModificationTime(getCurrentTime());
-        auditUpdatedValue.setNewValue(Integer.parseInt(newImage.get(LambdaConstant.VALUE).getS()));
-        auditUpdatedValue.setOldValue(Integer.parseInt(oldImage.get(LambdaConstant.VALUE).getS()));
+        auditUpdatedValue.setNewValue(newImage.get(LambdaConstant.VALUE).getS());
+        auditUpdatedValue.setOldValue(oldImage.get(LambdaConstant.VALUE).getS());
         auditUpdatedValue.setUpdatedAttribute(LambdaConstant.VALUE);
 
         DynamoDBMapper mapper = new DynamoDBMapper(amazonDynamoDB);
@@ -81,14 +81,13 @@ public class AuditProducer implements RequestHandler<DynamodbEvent, LambdaRespon
 
     private void putInsertEvent(DynamodbEvent.DynamodbStreamRecord record) {
         Map<String, AttributeValue> image = record.getDynamodb().getNewImage();
-        NewValue newValue = new NewValue(image.get(LambdaConstant.KEY).getS(), Integer.parseInt(image.get(LambdaConstant.VALUE).getS()));
-        Gson gson = new GsonBuilder().create();
+        NewValue newValue = new NewValue(image.get(LambdaConstant.KEY).getS(), image.get(LambdaConstant.VALUE).getS());
 
         AuditCreatedValue auditCreatedValue = new AuditCreatedValue();
         auditCreatedValue.setId(UUID.randomUUID().toString());
         auditCreatedValue.setItemKey(image.get(LambdaConstant.KEY).getS());
         auditCreatedValue.setModificationTime(getCurrentTime());
-        auditCreatedValue.setNewValue(gson.toJson(newValue));
+        auditCreatedValue.setNewValue(newValue);
 
         DynamoDBMapper mapper = new DynamoDBMapper(amazonDynamoDB);
         mapper.save(auditCreatedValue);
