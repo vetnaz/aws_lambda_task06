@@ -64,8 +64,8 @@ public class AuditProducer implements RequestHandler<DynamodbEvent, LambdaRespon
     }
 
     private void putUpdateEvent(DynamodbEvent.DynamodbStreamRecord record) {
-        Map<String, AttributeValue> oldImage = record.getDynamodb().getNewImage();
-        Map<String, AttributeValue> newImage = record.getDynamodb().getOldImage();
+        Map<String, AttributeValue> oldImage = record.getDynamodb().getOldImage();
+        Map<String, AttributeValue> newImage = record.getDynamodb().getNewImage();
 
         AuditUpdatedValue auditUpdatedValue = new AuditUpdatedValue();
         auditUpdatedValue.setId(UUID.randomUUID().toString());
