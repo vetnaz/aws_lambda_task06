@@ -1,0 +1,14 @@
+com\task06\dto\Record.class
+com\task06\dto\Records.class
+com\task06\constant\LambdaConstant.class
+com\task06\dto\NewImage.class
+com\task06\dto\Key.class
+com\task06\model\Configuration.class
+com\task06\dto\Keys.class
+com\task06\model\AuditCreatedValue.class
+com\task06\AuditProducer.class
+com\task06\dto\DynamodbRecord.class
+com\task06\dto\Value.class
+com\task06\model\NewValue.class
+com\task06\dto\LambdaResponse.class
+com\task06\model\AuditUpdatedValue.class

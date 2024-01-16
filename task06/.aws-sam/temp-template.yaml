@@ -1,0 +1,11 @@
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      Timeout: 300
+      MemorySize: 128
+      Handler: com.task06.AuditProducer
+      CodeUri: C:\Users\Vitalii_Nazaruk\Desktop\Projects\aws_lambda_task06\task06
+      Runtime: java11
+      Architectures:
+        - x86_64
